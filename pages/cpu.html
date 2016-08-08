@@ -1,0 +1,261 @@
+ <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+<div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default" ng-controller="PageController">
+                        <div class="panel-heading">
+                            CPU Core Summary
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>cpu</th>
+                                            <th>user</th>
+                                            <th>nice</th>
+                                            <th>system</th>
+                                             <th> idle </th>
+                                             <th> iowait </th>
+                                             <th>irq </th>
+                                             <th>softirq</th>  
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="info" dir-Paginate=" (k,v) in cpucore|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                                            <td>{{v.CPU}}</td>
+                                            <td>{{v.user}}</td>
+                                            <td>{{v.nice}}</td>
+                                            <td>{{v.system}}</td>
+                                            <td> {{v.idle}}</td>
+                                            <td> {{v.iowait}} </td>
+                                           <td> {{v.irq}} </td>
+                                           <td> {{v.softirq}} </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Cpu Used percentage and Per Core
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                        
+
+                            <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover" id="dataTables-example">                                    <thead>
+                                        <tr>
+                                            <th>CPUcore</th>
+                                           <th> %Used </th>
+                                           <th> Idle </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="warning" dir-Paginate=" (k,v) in cpuper|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                                            <td>{{v.CPU}}</td>
+                                             <td> {{v.used}} </td>
+                                             <td> {{v.idle}} </td>
+                                            
+                                        </tr>
+                                         
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            CPU VMStat
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">                                    <thead>
+                                        <tr >
+                                            <th>User Time</th>
+                                            <th>System Time</th>
+                                            <th>Idle Time</th>
+                                            <th>IOWait</th>
+                                            <th> Stolen Time </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="info" dir-Paginate=" (k,v) in vmstat|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                                            <td>{{v.us}}</td>
+                                            <td>{{v.sy}}</td>
+                                            <td>{{v.id}}</td>
+                                            <td>{{v.wa}}</td>
+                                            <td> {{v.st}}</td>
+                                        </tr>
+                                                                      </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            CPU Mpstat
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive table-bordered">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">                                    <thead>
+                                        <tr >
+                                            <th>Time</th>
+                                            <th>cpu</th>
+                                            <th>%usr</th>
+                                            <th>%nice </th>
+                                            <th>%sys</th>
+                                            <th>%iowait</th>
+                                            <th> %irq</th>
+                                            <th> %soft</th>
+                                            <th> %steal</th>
+                                            <th> %guest</th>
+                                            <th> %gnice</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="warning" ng-repeat='(k,v) in mpstat'>
+                                            <td>{{v.Time}}</td>
+                                            <td>{{v.CPU}}</td>
+                                            <td> {{v.usr}} </td>
+                                            <td>{{v.sys}}</td>
+                                            <td>{{v.iowait}}</td>
+                                            <td> {{v.irq}} </td>
+                                            <td> {{v.soft}} </td>
+                                            <td> {{v.steal}} </td>
+                                            <td> {{v.guest}} </td>
+                                            <td> {{v.gnice}} <td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            TopTen Process by Cpu Used
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr >
+                                            <th>PID</th>
+                                            <th>CpuUsed</th>
+                                            
+                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                 <tr class="info"  dir-Paginate=" (k,v) in topten|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                                            <td>{{k}}</td>
+                                            <td>{{v}}</td>
+                                            
+                                          
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            System Cpu Info 
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Time</th>
+                                             <th>CPU%</th>
+                                            <th>Command</th>
+                                            <th>PID</th>
+                                            <th>UID</th>
+					    <th>%guest</th>
+					   <th>%system</th>
+				           <th> %usr</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <tr class="info"  dir-Paginate=" (k,v) in pidcpu|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                                            <td>{{v.Time}}</td>
+                                            <td>{{v.CPUper}}</td>
+					     <td>{{v.Command}}</td>
+					     <td>{{v.PID}}</td>
+					     <td>{{v.UID}}</td>
+					     <td>{{v.guest}}</td>	
+					     <td>{{v.system}}</td>
+					     <td>{{v.usr}} </td>	
+                                        </tr>
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+            <!-- /.row -->
+</div>
+</div>
+
+ <dir-pagination-controls
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" >
+    </dir-pagination-controls>
+</div>

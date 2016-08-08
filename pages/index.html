@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="LinMin">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>LinMin</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+   <!--<link href="dist/css/sb-admin-2.css" rel="stylesheet"> -->
+   <link href="css/LinMin-Admin.css" rel="stylesheet"> 
+    <!-- Angular d3 modules  --> 
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/nvd3/build/nv.d3.js"></script> <!-- or use another assembly -->
+    <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+   <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css">
+    <!-- Custom Fonts -->
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+            <!--<script src="angular.js" charset="UTF-8"></script>-->
+           <script src="angular-route.js" charset="UTF-8"></script>
+           <script src = "dirPagination.js"></script>
+           <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>     
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>  
+     <!--<script src="bower_components/d3/d3.js" charset="UTF-8"></script>-->
+
+       <!-- /#wrapper -->
+
+    <script src="app/app.js" ng-module="LinMin"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0" >
+  
+        <div ng-include='"navbar.html"' ng-controller="NavbarController"></div>
+        <div ng-include='"sidebar.html"' ng-controller="SidebarController"></div>
+</nav>
+
+                <div ng-controller="PageController">
+                 <ng-view></ng-view>
+
+
+</div>
+
+    </div>
+    <!-- /#wrapper -->
+
+    
+
+</body>
+
+</html>

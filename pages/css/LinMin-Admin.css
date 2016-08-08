@@ -1,0 +1,253 @@
+body {
+    background-color:initial;
+}
+
+#wrapper {
+    width: 100%;
+}
+
+#page-wrapper {
+    padding: 0 15px;
+    min-height: 568px;
+    background-color: #fff;
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+        padding: 0 30px;
+        border-left: 1px solid #e7e7e7;
+    }
+}
+
+.navbar-links {
+    margin-right: 0;
+}
+
+.navbar-links li {
+    display: inline-block;
+}
+
+.navbar-links li:last-child {
+    margin-right: 20px;
+}
+
+.navbar-links li a {
+    padding: 15px;
+    min-height: 45px;
+}
+
+.navbar-links .dropdown-menu li {
+    display: block;
+    background-color:initial;
+}
+
+.navbar-links .dropdown-menu li:last-child {
+    margin-right: 0;
+}
+
+.navbar-inks .dropdown-menu li a {
+    padding: 3px 20px;
+    min-height: 0;
+}
+
+.navbar-links .dropdown-menu li a div {
+    white-space:initial;
+}
+
+.navbar-links .dropdown-menu,
+.navbar-links .alerts {
+    width: 310px;
+    min-width: 0;
+}
+
+.navbar-links .tasks {
+    margin-left: -59px;
+}
+
+.navbar-links .alerts {
+    margin-left: -123px;
+}
+
+.navbar-links .user {
+    right: 0;
+    left: auto;
+}
+
+.sidebar .sidebar-nav.navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+    background-color:#F5F5F5;
+    
+}
+
+
+.sidebar ul li {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.sidebar ul li a.active {
+    background-color:#F5F5F5;
+}
+
+.sidebar .arrow {
+    float: right;
+}
+
+.sidebar .fa.arrow:before {
+    content: "\f104";
+}
+
+.sidebar .active>a>.fa.arrow:before {
+    content: "\f107";
+}
+
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+    border-bottom: 0!important;
+}
+
+.sidebar .nav-second-level li a {
+    padding-left: 37px;
+}
+
+.sidebar .nav-third-level li a {
+    padding-left: 52px;
+}
+
+@media(min-width:768px) {
+    .sidebar {
+        z-index: 1;
+        position: absolute;
+        width: 250px;
+        margin-top: 51px;
+    }
+
+    .navbar-top-links .dropdown-messages,
+    .navbar-top-links .dropdown-tasks,
+    .navbar-top-links .dropdown-alerts {
+        margin-left: auto;
+    }
+}
+
+
+
+
+.login-panel {
+    margin-top: 25%;
+}
+
+
+.tabulardata_wrapper {
+    position: relative;
+    clear: both;
+}
+
+table.tabulardata_wrapper thead .sorting,
+table.tabulardata_wrapper thead .sorting_asc,
+table.tabulardata_wrapper thead .sorting_desc,
+table.tabulardata_wrapper thead .sorting_asc_disabled,
+table.tabulardata_wrapper thead .sorting_desc_disabled {
+    background: 0 0;
+}
+
+table.tabulardata_wrapper thead .sorting_asc:after {
+    content: "\f0de";
+    float: right;
+    font-family: fontawesome;
+}
+
+table.tabulardata_wrapper thead .sorting_desc:after {
+    content: "\f0dd";
+    float: right;
+    font-family: fontawesome;
+}
+
+table.tabulardata_wrapper thead .sorting:after {
+    content: "\f0dc";
+    float: right;
+    font-family: fontawesome;
+    color: rgba(50,50,50,.5);
+}
+.huge {
+    font-size: 40px;
+}
+
+.panel-green {
+    border-color: #5cb85c;
+}
+
+.panel-green > .panel-heading {
+    border-color: #5cb85c;
+    color: #fff;
+    background-color: #5cb85c;
+}
+
+.panel-green a {
+    color: #5cb85c;
+}
+
+.panel-green a:hover {
+    color:lightgreen;
+}
+
+.panel-red {
+    border-color: #d9534f;
+}
+
+.panel-red > .panel-heading {
+    border-color: #d9534f;
+    color: #fff;
+    background-color: #d9534f;
+}
+
+.panel-red a {
+    color: #d9534f;
+}
+
+.panel-red a:hover {
+    color: #b52b27;
+}
+
+.panel-yellow {
+    border-color: #f0ad4e;
+}
+
+.panel-yellow > .panel-heading {
+    border-color: #f0ad4e;
+    color: #fff;
+    background-color: #f0ad4e;
+}
+
+.panel-yellow a {
+    color: #f0ad4e;
+}
+
+.panel-yellow a:hover {
+    color: #df8a13;
+}
+
+.sort-icon {
+    font-size: 9px;
+    margin-left: 5px;
+}
+
+table.th {
+    cursor:pointer;
+}
+
+.fixed-panel {
+  min-height: 10;
+  max-height: 10;
+  overflow-y: scroll;
+}
+
+#new
+
+.table-responsive.table.tbody{
+  overflow-y:auto;      
+  height: 200px;            //  <-- Select the height of the body
+  width: 100%;
+  position: absolute;
+}

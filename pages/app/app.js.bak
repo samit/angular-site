@@ -1,0 +1,98 @@
+var app = angular.module('LinMin', ['ngRoute', 'angularUtils.directives.dirPagination']);
+app.config(['$routeProvider', function($routeProvider){
+	  $routeProvider
+	  .when("/", {templateUrl:"dashboard.html"})
+	  .when("/process", {templateUrl: "process.html", controller: "SidebarController"})
+	  .when("/cpu", {templateUrl: "cpu.html", controller: "SidebarController"})
+	  .when("/memory", {templateUrl: "mem_usage.html", controller: "SidebarController"})
+	  .when("/addhost", {templateUrl: "host.html", controller: "SidebarController"})
+	  .when("/alert", {templateUrl: "alert_noti.html", controller: "SidebarController"})
+      .when("/system", {templateUrl: "system.html", controller: "SidebarController"})
+      .otherwise("/");
+}]);
+
+
+app.controller("PageController", function($scope){
+
+});
+
+app.controller("SidebarController", function($scope){
+
+});
+
+app.controller("NavbarController", function($scope){
+	$scope.mem=40;
+	$scope.cpu=20;
+	$scope.disk=60;
+});
+
+app.controller("PageController", function($scope, $http, $interval){
+  
+  $scope.reload = function (){
+ 	$http.get('../services/page_process.json').success(function(data){
+  	$scope.data = data
+  	for( var i =0; i<data.length; i++){
+    		return data[i]
+		}
+	} );
+
+			}
+		$scope.reload();
+       		$interval($scope.reload, 5000);
+
+
+  var majmin = [];
+  var page_majmin = $http.get('../services/pro_maj_min.json').success(function(data){
+    $scope.majmin= data
+    for (var i =0; i<majmin.length; i++){
+       return majmin[i];
+};
+});
+  var iopage= [];
+  var pageio = $http.get('../services/io_per_process.json ').success(function(data){
+     $scope.iopage = data;
+     for (var i= 0; i<iopage.length; i++){
+          return iopage[i];
+
+}
+
+});
+
+  var ctxpage = [];
+  var ctx = $http.get('../services/ctxt.json').success(function(data){
+    $scope.ctxpage = data
+    for(i=0; i<ctxpage.length;i++){
+      return ctxpage[i];
+}
+
+});
+
+ var statm = [];
+  var stm = $http.get('../services/statm.json').success(function(data){
+    $scope.statm = data
+    for(i=0; i<statm.length;i++){
+      return statm[i];
+}
+
+});
+   var iocons = [];
+   var io_disk = $http.get('../services/io_con.json').success(function(data){
+    $scope.iocons = data
+    for(i=0; i<iocons.length;i++){
+      return iocons[i];
+}
+
+});
+
+
+   var tcpcon = [];
+   var tcp = $http.get('../services/tcpcon.json').success(function(data){
+    $scope.tcpcon = data;
+    for (i=0; i<tcpcon.length;i++){
+    return tcpcon[i];
+ 
+}
+})
+
+});
+

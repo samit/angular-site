@@ -1,0 +1,314 @@
+ <div id="page-wrapper">
+            <div class="row" ng-controller="PageController">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Running Processes</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Process Table 
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="tabulardata_wrapper">
+
+				    <form class="form-inline">
+        <div class="form-group">
+            <label >Search</label>
+            <input type="text" ng-model="search" class="form-control" placeholder="Search">
+        </div>
+    </form>
+  <br>
+                                <table width="100%" class="table table-striped table-bordered table-hover" at-table at-paginated at-list="list" at-config="config">
+                                    <thead>
+                                        <tr>
+                                            <th>Process ID</th>
+                                            <th>CPU Used</th>
+                                            <th>Memory Used KB</th>
+                                            <th>Swap Used</th>
+                                            <th>Max Mem</th>
+                                            <th> State </th>
+                                            <th> Command </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd gradeX" dir-Paginate=" (k,v) in data|orderBy:sortKey:reverse| filter:search|itemsPerPage:5">
+                                            <td>{{v.PID}}</td>
+                                            <td>{{ v.CPUused}}  </td>
+                                            <td>{{v.VmRss}} </td>
+                                            <td> {{v.VmSwap}}</td>
+                                            <td> {{v.VmHWM }} </td>
+                                            <td> {{v.State }} </td>
+                                            <td> {{ v.Command }} </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            I/O Stat Per Process
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                                                <form class="form-inline">
+        <!--<div class="form-group">
+            <label >Search</label>
+            <input type="text" ng-model="search" class="form-control" placeholder="Search">
+        </div>
+    </form>-->
+  
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example"at-table at-paginated at-list="list" at-config="config">
+                                    <thead>
+                                        <tr>
+                                            <th>Rchar</th>
+                                            <th>Wchar</th>
+                                            <th>Syscr</th>
+                                            <th>Read_bytes</th>
+                                            <th> Write_bytes</th>
+                                           <th> Canceled_Wbytes</th>
+                                           <th> pid </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr dir-Paginate=" (k,v) in iopage|orderBy:sortKey:reverse| filter:search|itemsPerPage:5">
+
+                                            <td>{{v.rchar}}</td>
+                                            <td>{{v.wchar}}</td>
+                                            <td>{{v.syscr}}</td>
+                                            <td>{{v.read_bytes}}</td>
+                                            <td> {{v.write_bytes}}</td>
+                                            <td> {{v.cancelled_write_bytes}}</td>
+                                            <td>{{v.pid}} </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Process Major Fault Minor Fault
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                    <form class="form-inline">
+       <!-- <div class="form-group">
+            <label >Search</label>
+            <input type="text" ng-model="search" class="form-control" placeholder="Search">
+        </div>
+    </form>-->
+  
+      <table class="table table-striped table-bordered table-hover" id="dataTables-example">                                    <thead>
+                                        <tr >
+                                            <th>PID</th>
+                                            <th>Command</th>
+                                            <th>Major Fault</th>
+                                            <th>Minor Fault</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="warning" dir-Paginate=" (k,v) in majmin|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+
+                                            <td>{{v.pid}}</td>
+                                            <td>{{v.command}}</td>
+                                            <td>{{v.majflt}}</td>
+                                            <td>{{v.minflt}}</td>
+                                        </tr>
+                                         
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Process Context Switching
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">                                    <thead>
+                                        <tr >
+                                            <th>PID</th>
+                                            <th>Command</th>
+                                            <th>Vol_ctxt</th>
+                                            <th>NonVol_ctxt</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="info" dir-Paginate=" (k,v) in ctxpage|orderBy:sortKeye|filter:search|itemsPerPage:5">
+                                            <td>{{v.pid}}</td>
+                                            <td>{{v.command}}</td>
+                                            <td>{{v.vctx}}</td>
+                                            <td>{{v.nvctx}}</td>
+                                        </tr>
+                                                                      </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Process Causing IO Wait
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive table-bordered">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">                                    <thead>
+                                        <tr >
+                                            <th>PID </th>
+                                            <th>State</th>
+                                            <th>Command</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="info" dir-Paginate=" (k,v) in iocons|orderBy:sortKeye|filter:search|itemsPerPage:5">
+					   <td> {{v.pid}} </td>	
+                                           <td>{{v.state}}</td>
+                                   	   <td>{{v.command}}</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Per Process page Statm
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr >
+                                            <th>PID</th>
+                                            <th>Command</th>
+                                            <th>Dirty Pages</th>
+                                            <th>Share_page</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="info" dir-Paginate=" (k,v) in statm|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                                            <td>{{v.pid}}</td>
+                                            <td>{{v.cmd}}</td>
+                                            <td>{{v.dirty_pages}}</td>
+                                            <td>{{v.share_page}}</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Process With Tcp Conntection
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                             
+                           <div class="table-responsive">
+                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr class="info">
+                                            <th>SendQ</th>
+                                             <th> RecvQ </th>
+                                             <th> State </th>
+                                             <th>LocalAddress</th>
+                                             <th> RemoteAddress</th>
+                                             <th> UserPid </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <tr class="info" dir-Paginate=" (k,v) in tcpcon|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                                            <td >{{v.sendq}}</td>
+                                            <td> {{v.recvq}}</td>
+                                            <td> {{v.state}}</td>
+                                            <td> {{v.locad}}</td>
+                                            <td> {{v.remad}}</td>
+                                            <td> {{v.addm}}</td>
+                                        </tr>
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+            <!-- /.row -->
+
+     <dir-pagination-controls
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" >
+    </dir-pagination-controls>
+
+  
+        </div>
+        <!-- /#page-wrapper -->
+          

@@ -1,0 +1,65 @@
+ <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+
+		<form id="contact-form" method="post" action="contact.php" role="form" name=addhost>
+
+    <div class="messages"></div>
+
+    <div class="controls">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" ng-class="{ 'has-error': addhost.ip.$invalid }">
+                    <label for="form_name">Host IP</label>
+                    <input id="form_name" type="text" name="ip" class="form-control" placeholder="Please enter your Host IP" required="required" data-error="Firstname is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group" ng-class="{ 'has-error': addhost.comst.$invalid }"> 
+                    <label for="form_lastname">Community String</label>
+                    <input id="form_lastname" type="text" name="comst" class="form-control" placeholder="Please enter your Community string" required="required" data-error="Lastname is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" ng-class="{ 'has-error': addhost.oid.$invalid }">
+                    <label for="form_email">OID</label>
+                    <input id="form_email" type="email" name="oid" class="form-control" placeholder="Please enter your OID *" required="required" data-error="Valid email is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group" ng-class="{ 'has-error': addhost.description.$invalid }">
+                    <label for="form_phone">Threshold</label>
+                    <input id="form_phone" type="tel" name="description" class="form-control" placeholder="Please enter your threshold limit">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group" ng-class="{ 'has-error': addhost.threshold.$invalid }">
+                    <label for="form_message">Message</label>
+                    <textarea id="form_message" name="threshold" class="form-control" placeholder="Message for me " rows="4" required="required" data-error="Please set threshold."></textarea>
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-success btn-send" value="Send message">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-muted"><strong>*</strong></p>
+            </div>
+        </div>
+    </div>
+
+</form>
+</div>
+</div>
+</div>

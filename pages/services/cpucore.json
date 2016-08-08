@@ -1,0 +1,1 @@
+[{"softirq": "280", "iowait": "8460", "system": "1570", "idle": "96871", "user": "737", "irq": "0", "CPU": "cpu", "nice": "0"}, {"softirq": "79", "iowait": "3681", "system": "834", "idle": "48650", "user": "403", "irq": "0", "CPU": "cpu0", "nice": "0"}, {"softirq": "200", "iowait": "4778", "system": "735", "idle": "48221", "user": "334", "irq": "0", "CPU": "cpu1", "nice": "0"}]
