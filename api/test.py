@@ -1,61 +1,25 @@
-from get_sys_info import GetSysStat
-import operator
-import pprint
-f =[]
-a= GetSysStat()
-b =a.get_pid()
-#print b
-#print "Printing CPUPID"
-#pprint.pprint( dict(sorted(c.iteritems(), key=operator.itemgetter(1), reverse=True)[:10]))
+import commands, pprint
+command = 'ss -tp'
+l = []
+d = {}
+com_data = commands.getoutput(command)
+fil_data = filter(lambda x:x !='', com_data.split('\n'))
+row_col=map(lambda x:x.strip().split(),fil_data)
+rows,col = row_col[0],row_col[1:]
+#rows[0] = "Time"
+#parse_data = {k:v for (k,v) in zip(rows,zip(*col))}
 
-print a.per_procs_status()
+row  = ['state', 'recvq', 'sendq', 'locad', 'remad', 'addm']
+for c in col:
+  st =  c[0]
+  rq =c[1].strip()
+  sq= c[2].strip()
+  lad= c[3].strip()
+  rad = c[4].strip()
+  adm = c[5].strip()
+  val  = [st,sq,rq,lad,rad,adm]
+  d [row] = [v for v in val ] 
+  l.append(d)
 
-#d = a.get_disk_usge()
-#for q in d:
-  #f.append(q)
-#print f
-#print c 
-#c = a.pre_procs_status()
-#print c 
-#print a. get_pid_cpu_consuming()
-#d = a.alert_system()
-#print a.get_cpu_stat()
-#cpu_wait = d['cpu']['wa']
-#swap_si = d['swap']['si']
-#swap_so = d['swap']['so']
-#si_cnt =0
-#so_cnt =0
-#for s in  swap_si:
-  #if (s >0):
-    #si_cnt = si_cnt+1
+print l
 
-#for s in swap_so:
-  #if(s > 0):
-    #so_cnt = so_cnt+1
-    
-#if(si_cnt > 5 and so_cnt >5):
-  #print "Alert The SYstem is Swapping"
-
-  #try:
-    #ids = d['cpu']['id']
-    #sy_time = d['cpu']['sy']
-    #us_time = d['cpu']['us']
-    #ctxt = d['system']['cs']
-    #intr = d['system']['in']
-
-    #for ct,intrr in ctxt,intr:
-      #if(ct > intrr):
-        #print "Alert System is doing More ContextSwitching than Actual Work"
-
-    #for x,y in sy_time, us_time:
-      #if(x+y > 1):
-        #print "Possible CPU bottelneck"
-
-      #if (x > y):
-        #print "System is spending less time on real Work (not good)"
-      #if(x > 1):
-        #print "Your Application is issuing many system calls to the kernal and asking kernal to work"
-  #except Excemtion as e:
-    #print e
-
-print a.get_uname()

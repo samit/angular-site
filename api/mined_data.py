@@ -11,6 +11,8 @@ def process_page():
   a= GetSysStat()
   b =a.get_pid()
   mpstat = a.get_mpstat()
+  proc_stat = a.get_proc_stat()
+  pprint.pprint(proc_stat)
   sar_row = [ 'Time' ,'kbmemfree', 'kbmemused' , 'memused' ,'kbbuffers' , 'kbcached',  'kbcommit',   'commit',  'kbactive',   'kbinact', 'kbdirty']
   sar_mem = a.parse_sar_mem('sar -r 2 5|cut -f 5', sar_row)
   sar_page_row = [ 'Time',  'pgpgin', 'pgpgout',   'fault'  ,'majflt' , 'pgfree', 'pgscank' ,'pgscand' ,'pgsteal',  'vmeff']

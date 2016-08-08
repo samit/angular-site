@@ -103,11 +103,11 @@
                 <div class="col-lg-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> PID Context Switching
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Per Process Cpu Usage
                                                     </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-    				<nvd3 options="options" data="memdata"></nvd3>                         
+    				<nvd3 options="options" data="pidcpu"></nvd3>                         
 
                         </div>
                         <!-- /.panel-body -->
@@ -122,9 +122,7 @@
                             <div class="row">
                                 
                                 <div class="col-lg-8">
-                                   <canvas id="pie" class="chart chart-pie"
-  chart-data="datapimem" chart-labels="memlabels" chart-options="options">
-</canvas>
+			<nvd3 options="memoptions" data="processdata"></nvd3>
                                 </div>
                                 <!-- /.col-lg-8 (nested) -->
                             </div>

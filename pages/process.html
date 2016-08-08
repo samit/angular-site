@@ -36,7 +36,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="odd gradeX" dir-Paginate=" (k,v) in data|orderBy:sortKey:reverse| filter:search|itemsPerPage:5">
+                                        <tr class="odd gradeX" dir-Paginate=" (k,v) in processdata|orderBy:sortKey:reverse| filter:search|itemsPerPage:5">
                                             <td>{{v.PID}}</td>
                                             <td>{{ v.CPUused}}  </td>
                                             <td>{{v.VmRss}} </td>

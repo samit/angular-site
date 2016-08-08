@@ -27,12 +27,12 @@ app.controller("NavbarController", function($scope){
 });
 
 app.controller("PageController", function($scope, $http, $interval){
-  
+  var processdata = []; 
   $scope.reload = function (){
  	$http.get('../services/page_process.json').success(function(data){
-  	$scope.data = data
-  	for( var i =0; i<data.length; i++){
-    		return data[i]
+  	$scope.processdata = data
+  	for( var i =0; i<processdata.length; i++){
+    		return processdata[i]
 		}
 	} );
 
@@ -231,14 +231,56 @@ var pidcpu = [];
 
 }
 });
+
+
 }
+
+	       
                $scope.reload();
                $interval($scope.reload, 5000);
-]
 
+$scope.options = {
+            chart: {
+                type: 'pieChart',
+                height: 500,
+                x: function(d){return d.PID;},
+                y: function(d){return d.CPUper;},
+                showLabels: true,
+                duration: 500,
+                labelThreshold:1,
+                labelSunbeamLayout: true,
+                legend: {
+                    margin: {
+                        top: 5,
+                        right: 35,
+                        bottom: 5,
+                        left: 0
+                    }
+                }
+            }
+        };
 
-
-
+//bar chart
+$scope.memoptions = {
+            chart: {
+                type: 'pieChart',
+                height: 500,
+                x: function(d){return d.PID;},
+                y: function(d){return d.VmRss;},
+                showLabels: true,
+                duration: 500,
+                labelThreshold:1,
+                labelSunbeamLayout: true,
+                legend: {
+                    margin: {
+                        top: 5,
+                        right: 35,
+                        bottom: 5,
+                        left: 0
+                    }
+                }
+            }
+        };
 
 //before last line
 });
