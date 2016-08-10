@@ -245,7 +245,7 @@ class GetSysStat():
     procs_blocked = ''.join([x for x in f if x.startswith('procs_blocked')]).split()[1]
     d_keys = ['ctxt', 'btime', 'process', 'process_run', 'process_blocked']
     d_val = [ctxt, btime,process, process_run,procs_blocked]
-    return (dict(zip(d_keys,d_val)))
+    return [(dict(zip(d_keys,d_val)))]
 
   def per_procs_status(self):
     """Read /proc/pid/status and returns list of dict_data """
@@ -290,29 +290,17 @@ class GetSysStat():
 
 
   def get_disk_usge(self):
-    DiskUsage = namedtuple('DiskUsage',  ' device mounts fstype total used free percent')
-    disk_info =namedtuple('partition', 'device mountpoint fstype') 
-    f = open('/etc/mtab', 'r')
+    """ Returns dict data for df command"""
     dlist = []
-    for line in f:
-      if line.startswith('none'):continue
-      device = line.split()[0]
-      mountpoint = line.split()[1]
-      fstype = line.split()[2]
-      dtuple = disk_info(device, mountpoint,fstype)
-      dlist.append(dtuple)
-     
-    for  item in dlist:
-      st = os.statvfs(item.mountpoint)
-      free = st.f_bavail * st.f_frsize
-      total = st.f_blocks * st.f_frsize
-      used = (st.f_blocks - st.f_bfree) * st.f_frsize
-      try:
-        percent =  (float(used) / total) * 100
-      except ZeroDivisionError:
-        percent = 0
-      yield DiskUsage(item.device,item.mountpoint, item.fstype,total, used, free, round(percent, 1))
-
+    df = subprocess.Popen(["df"], stdout=subprocess.PIPE)
+    output =df.communicate()[0].split('\n')
+    key,val = output[0], output[1:]
+    dkey = key.split()
+    for v in  val:
+      dval = v.split()
+      dlist.append(dict(zip(dkey,dval)))
+    dlist.pop()
+    return dlist
    
 
   def get_net_stat_summary(self,filename):

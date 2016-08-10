@@ -10,9 +10,11 @@ def process_page():
   f =[]
   a= GetSysStat()
   b =a.get_pid()
+  dd= a.get_disk_usge()
+  #pprint.pprint(dd)
   mpstat = a.get_mpstat()
   proc_stat = a.get_proc_stat()
-  pprint.pprint(proc_stat)
+  #pprint.pprint(proc_stat)
   sar_row = [ 'Time' ,'kbmemfree', 'kbmemused' , 'memused' ,'kbbuffers' , 'kbcached',  'kbcommit',   'commit',  'kbactive',   'kbinact', 'kbdirty']
   sar_mem = a.parse_sar_mem('sar -r 2 5|cut -f 5', sar_row)
   sar_page_row = [ 'Time',  'pgpgin', 'pgpgout',   'fault'  ,'majflt' , 'pgfree', 'pgscank' ,'pgscand' ,'pgsteal',  'vmeff']
@@ -47,7 +49,9 @@ def process_page():
   with open("../pages/services/mempage.json", 'w') as sarpage:
     json.dump(sar_page, sarpage)
     sarpage.close()
-
+  with open("../pages/services/disk_usage.json", 'w') as diskpage:
+    json.dump(dd, diskpage)
+    diskpage.close()
   with open("../pages/services/mempie.json", 'w') as mempiepage:
     json.dump(mempie, mempiepage)
     mempiepage.close()
@@ -79,6 +83,9 @@ def process_page():
   with open("../pages/services/netsnmp.json", 'w') as netsnmp:
     json.dump(f, netsnmp) 
     netsnmp.close()
+  with open("../pages/services/procs_stat.json", 'w') as psfile:
+    json.dump(proc_stat, psfile)
+    psfile.close()
 
   
   with open("../pages/services/cpucore.json", 'w') as core:

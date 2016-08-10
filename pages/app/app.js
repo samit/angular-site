@@ -53,6 +53,36 @@ app.controller("PageController", function($scope, $http, $interval){
 }
      $scope.reload();
      $interval($scope.reload, 5000);
+
+
+  var disk_page = [];
+   $scope.reload =function(){
+          $http.get('../services/disk_usage.json').success(function(data){
+          $scope.disk_page = data
+          for (var i =0; i<disk_page.length; i++){
+           return disk_page[i];
+          } 
+      });
+}
+     $scope.reload();
+     $interval($scope.reload, 5000);
+
+  var procs_page = [];
+   $scope.reload =function(){
+          $http.get('../services/procs_stat.json').success(function(data){
+          $scope.procs_page =data
+          for (var i =0; i<procs_page.length; i++){
+           return procs_page[i];
+          }
+
+      });
+}
+     $scope.reload();
+     $interval($scope.reload, 5000);
+
+
+
+
   var iopage= [];
   $scope.reload = function(){
 
@@ -281,6 +311,31 @@ $scope.memoptions = {
                 }
             }
         };
+
+//Disk chart 
+
+$scope.diskoptions = {
+            chart: {
+                type: 'pieChart',
+                height: 500,
+                x: function(d){return d.Filesystem;},
+                y: function(d){return d.Used;},
+                showLabels: true,
+                duration: 500,
+                labelThreshold:1,
+                labelSunbeamLayout: true,
+                legend: {
+                    margin: {
+                        top: 5,
+                        right: 35,
+                        bottom: 5,
+                        left: 0
+                    }
+                }
+            }
+        };
+
+
 
 //before last line
 });
